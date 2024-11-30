@@ -1,12 +1,37 @@
 package poo;
 
+import java.util.List;
+
 import uni1a.*;
+
 
 public class PruebaAudioVisual {
 	public static void main(String[] args) {
         System.out.println("Prueba de contenido Audiovisual\n");
 
-        // Crear instancias de las subclases
+        //Rutas de los archivos
+        String Peliculas_Archivo = "peliculas.cvs";
+        String Series_Archivo = "series.cvs";
+        String Documentales_Archivo = "documentales.cvs";
+
+        //Leer datos desde los archivos
+        List<Pelicula> peliculas = ArchivoUtil.Leer_Peliculas(Peliculas_Archivo);
+        List<SerieDeTV> series = ArchivoUtil.Leer_Series(Series_Archivo);
+        List<Documental> documentales = ArchivoUtil.Leer_Documentales(Documentales_Archivo);
+
+        //Mostrar datos leidos
+        System.out.println("Peliculas: ");
+        peliculas.forEach(p -> p.mostrarDetalles());
+        System.out.println("Series: ");
+        series.forEach(s -> s.mostrarDetalles());
+        System.out.println("Documentales: ");
+        documentales.forEach(d -> d.mostrarDetalles());
+
+        //modificar datos(opcional) y guardar
+        peliculas.add(new Pelicula("Nueva Pelicula", 120, "drama", "Estudio X"));
+        ArchivoUtil.Guardar_Peliculas(Peliculas_Archivo, peliculas);
+        /* 
+         // Crear instancias de las subclases
         ContenidoAudiovisual[] contenidos = new ContenidoAudiovisual[3];
         
         //Pelicula con actores
@@ -30,6 +55,6 @@ public class PruebaAudioVisual {
         // Mostrar los detalles de cada contenido audiovisual
         for (ContenidoAudiovisual contenido : contenidos) {
             contenido.mostrarDetalles();
-        }
+        }*/
     }
 }
