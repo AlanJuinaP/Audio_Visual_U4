@@ -1,6 +1,5 @@
-package uni1a;
+package model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,35 +45,13 @@ public abstract class ContenidoAudiovisual {
         return id;
     }
 
-   
-
     public String toCSV() {
         return id + "," + titulo + "," + duracionEnMinutos + "," + genero;
     }
 
     public static ContenidoAudiovisual fromCSV(String lineaCSV) {
-        // Lógica genérica, las subclases deben implementar su propia conversión.
-        return null;
+        return null; // Se implementa en subclases.
     }
 
-     public static void guardarEnArchivo(String rutaArchivo, List<ContenidoAudiovisual> contenidos) throws IOException {
-        List<String> lineas = new ArrayList<>();
-        for (ContenidoAudiovisual contenido : contenidos) {
-            lineas.add(contenido.toCSV());
-        }
-        ArchivoUtil.escribirArchivo(rutaArchivo, lineas);
-    }
-    public static List<ContenidoAudiovisual> leerDesdeArchivo(String rutaArchivo) throws IOException {
-        List<String> lineas = ArchivoUtil.leerArchivo(rutaArchivo);
-        List<ContenidoAudiovisual> contenidos = new ArrayList<>();
-        for (String linea : lineas) {
-            ContenidoAudiovisual contenido = fromCSV(linea);
-            if (contenido != null) {
-                contenidos.add(contenido);
-            }
-        }
-        return contenidos;
-    }
-    
     public abstract void mostrarDetalles();
 }

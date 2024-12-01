@@ -1,11 +1,8 @@
-package uni1a;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Clase Documental que extiende ContenidoAudiovisual, incluye funcionalidad de manejo de archivos.
- */
 public class Documental extends ContenidoAudiovisual {
     private String tema;
     private List<Investigador> investigadores;
@@ -32,14 +29,16 @@ public class Documental extends ContenidoAudiovisual {
         this.investigadores.add(investigador);
     }
 
-
     @Override
     public String toCSV() {
         StringBuilder investigadoresCSV = new StringBuilder();
         for (Investigador investigador : investigadores) {
-            investigadoresCSV.append(investigador.getNombre()).append(";").append(investigador.getEspecialidad()).append("|");
+            investigadoresCSV.append(investigador.getNombre())
+                             .append(";")
+                             .append(investigador.getEspecialidad())
+                             .append("|");
         }
-        return super.toCSV() + "," + tema + "," + investigadoresCSV.toString();
+        return super.toCSV() + "," + tema + "," + investigadoresCSV;
     }
 
     public static Documental fromCSV(String lineaCSV) {
@@ -60,7 +59,7 @@ public class Documental extends ContenidoAudiovisual {
         System.out.println("Detalles del documental:");
         System.out.println("ID: " + getId());
         System.out.println("Título: " + getTitulo());
-        System.out.println("Duración en minutos: " + getDuracionEnMinutos());
+        System.out.println("Duración: " + getDuracionEnMinutos());
         System.out.println("Género: " + getGenero());
         System.out.println("Tema: " + tema);
         System.out.println("Investigadores: " + investigadores);

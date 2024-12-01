@@ -1,13 +1,9 @@
-package uni1a;
+package model;
 
-/**
- * Representa un actor con nombre y edad.
- */
 public class Actor {
     private String nombre;
     private int edad;
 
- 
     public Actor(String nombre, int edad) {
         setNombre(nombre);
         setEdad(edad);
